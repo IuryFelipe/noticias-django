@@ -1,18 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-class Noticia(models.Model):
-    titulo = models.CharField(
-        "Título", 
-        max_length=128, 
-        null = True, 
-        blank = True)
-    conteudo = models.TextField("Conteúdo")
-    data_de_pubicacao = models.DateField(
-        "Data de publicação", 
-        blank=True, 
-        null=True)
-
 class Pessoa(models.Model):
     usuario = models.OneToOneField(
         User, 
@@ -42,3 +30,21 @@ class Pessoa(models.Model):
 
     def __str__(self):
         return self.nome
+
+class Noticia(models.Model):
+    titulo = models.CharField(
+        "Título", 
+        max_length=128, 
+        null = True, 
+        blank = True)
+    conteudo = models.TextField("Conteúdo")
+    data_de_pubicacao = models.DateField(
+        "Data de publicação", 
+        blank=True, 
+        null=True)
+    autor = models.ForeignKey(
+        Pessoa, 
+        on_delete=models.CASCADE,
+        verbose_name='Autor', 
+        null=True, 
+        blank=True)
