@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Noticia
 from .models import Pessoa
+from .models import Tag
 
 # Register your models here.
 @admin.register(Noticia)
@@ -9,4 +10,8 @@ class NoticiaAdmin(admin.ModelAdmin):
 
 @admin.register(Pessoa)
 class PessoaAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
     pass

@@ -31,6 +31,13 @@ class Pessoa(models.Model):
     def __str__(self):
         return self.nome
 
+class Tag(models.Model):
+    nome = models.CharField(max_length=64)
+    slug = models.SlugField(max_length=64)
+
+    def __str__(self):
+        return self.nome
+
 class Noticia(models.Model):
     titulo = models.CharField(
         "Título", 
@@ -48,3 +55,4 @@ class Noticia(models.Model):
         verbose_name='Autor', 
         null=True, 
         blank=True)
+    tags = models.ManyToManyField(Tag)
