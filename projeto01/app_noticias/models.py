@@ -56,3 +56,6 @@ class Noticia(models.Model):
         null=True, 
         blank=True)
     tags = models.ManyToManyField(Tag)
+
+    def __str__(self):
+        return self.titulo
